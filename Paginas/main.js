@@ -1,4 +1,4 @@
-function addNreTask(){
+function addNewTask(){
     var lista = document.getElementById("list");
     var text = document.getElementById("taskname").value;
 
