@@ -5,18 +5,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+
     <title>Document</title>
     <style>
         html,
         body,
         .frame {
-            width: 1080px;
-            height: 800px;
-            margin: 0;
+            width: 95%;
+            height: 95%;
+            margin: 15px;
             font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
                 Droid Sans, Helvetica Neue, sans-serif;
-            padding: 20px;
+            padding: 0px;
             font-size: 14px;
             border: none;
         }
@@ -42,16 +46,22 @@
         If you have a subdomain, replace the 'demo' subdomain in the iframe source URL with yours.
     </p>
 
-    <input type="button" value="Open Ready Player Me" onClick="displayIframe()" />
-    <p id="avatarUrl">Avatar URL:</p>
 
-    <iframe id="frame" class="frame" allow="camera *; microphone *; clipboard-write" hidden></iframe>
+    <div style="background-color: azure; float: left; height: 65%; width: 20%;"><!-- Use it like any other HTML element -->
+       
 
+        <input type="button" value="Open Ready Player Me" onClick="displayIframe()" style="margin-top: 425px;" />
+
+    </div>        
+
+    <iframe id="frame" class="frame"  style="float: right; height: 100%; width: 70%;" 
+    allow="camera *; microphone *; clipboard-write"   ></iframe>
+    
     <script>
         const subdomain = 'sistema-fiep'; // Replace with your custom subdomain
         const frame = document.getElementById('frame');
 
-        frame.src = `https://${subdomain}.readyplayer.me/avatar?frameApi`;
+        frame.src = `https://sistema-fiep.readyplayer.me?frameApi`;
 
         window.addEventListener('message', subscribe);
         document.addEventListener('message', subscribe);
@@ -79,7 +89,7 @@
             if (json.eventName === 'v1.avatar.exported') {
                 console.log(`Avatar URL: ${json.data.url}`);
                 document.getElementById('avatarUrl').innerHTML = `Avatar URL: ${json.data.url}`;
-                document.getElementById('frame').hidden = true;
+                document.getElementById('frame').hidden = false;
             }
 
             // Get user id

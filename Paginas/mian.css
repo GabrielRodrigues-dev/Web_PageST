@@ -35,3 +35,15 @@ input{
     border-width: 0px;
     border-radius: 4px;
 }
+
+.demo {
+    grid-area: demo;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    border: 0px solid #555;
+    box-sizing: border-box;
+}
